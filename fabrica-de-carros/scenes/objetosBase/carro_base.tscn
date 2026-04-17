@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cxqhh7m501byq"]
+
+[ext_resource type="Texture2D" uid="uid://dptfhqhk0rhuy" path="res://icon.svg" id="1_7ug7u"]
+
+[node name="CarroBase" type="Node2D" unique_id=348670481]
+
+[node name="CarroSprite" type="Sprite2D" parent="." unique_id=1714846947]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(3, 1)
+texture = ExtResource("1_7ug7u")
+
+[node name="RodaEsquerda" type="Marker2D" parent="." unique_id=2136056950]
+position = Vector2(-120, 100)
+
+[node name="RodaDireita" type="Marker2D" parent="." unique_id=1606623424]
+position = Vector2(120, 100)
