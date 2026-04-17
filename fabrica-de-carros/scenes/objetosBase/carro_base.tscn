@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cxqhh7m501byq"]
 
 [ext_resource type="Texture2D" uid="uid://dptfhqhk0rhuy" path="res://icon.svg" id="1_7ug7u"]
+[ext_resource type="Script" uid="uid://cvd677ogtvpq1" path="res://scripts/carro_base.gd" id="1_uqhoj"]
 
 [node name="CarroBase" type="Node2D" unique_id=348670481]
+script = ExtResource("1_uqhoj")
 
 [node name="CarroSprite" type="Sprite2D" parent="." unique_id=1714846947]
 texture_filter = 1
