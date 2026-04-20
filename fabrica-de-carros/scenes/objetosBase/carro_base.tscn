@@ -5,6 +5,7 @@
 
 [node name="CarroBase" type="Node2D" unique_id=348670481]
 script = ExtResource("1_uqhoj")
+metadata/_edit_group_ = true
 
 [node name="CarroSprite" type="Sprite2D" parent="." unique_id=1714846947]
 texture_filter = 1
