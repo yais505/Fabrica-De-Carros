@@ -86,4 +86,90 @@ static var questoes := {
 		"resultado": 62
 		# Conta: (8 * 7) - -6 = 62
 	}
+
+# QUESTÃO ESPECIAL - FASE 5
+
+static var cores_fase_5 := ["Cor 1", "Cor 2"]
+static var rodas_tras_fase_5 := ["Roda Traseira 1", "Roda Traseira 2"]
+static var rodas_frente_fase_5 := ["Roda Dianteira 1", "Roda Dianteira 2"]
+
+static var total_carros_fase_5 := 8
+static var carros_feitos_fase_5 := []
+
+
+static func iniciar_fase_5() -> Dictionary:
+	carros_feitos_fase_5 = []
+
+	return {
+		"fase": 5,
+		"pergunta": "Seguindo o princípio da casa dos pombos, quantos carros diferentes você consegue montar?",
+		"mensagem": "Agora monte todos os carros possíveis.",
+		"cores": cores_fase_5,
+		"rodas_tras": rodas_tras_fase_5,
+		"rodas_frente": rodas_frente_fase_5,
+		"total_carros": total_carros_fase_5
+	}
+
+
+static func criar_carro_fase_5(indice_cor: int, indice_roda_tras: int, indice_roda_frente: int) -> Dictionary:
+	if not indices_validos_fase_5(indice_cor, indice_roda_tras, indice_roda_frente):
+		return {
+			"aceito": false,
+			"fase_concluida": false,
+			"mensagem": "Escolha inválida. Tente montar outro carro."
+		}
+
+	var chave_carro = str(indice_cor) + "_" + str(indice_roda_tras) + "_" + str(indice_roda_frente)
+
+	for carro in carros_feitos_fase_5:
+		if carro["chave"] == chave_carro:
+			return {
+				"aceito": false,
+				"fase_concluida": false,
+				"mensagem": "Esse carro já foi construído. Faça outro carro diferente."
+			}
+
+	var novo_carro = {
+		"ordem": carros_feitos_fase_5.size() + 1,
+		"cor": cores_fase_5[indice_cor],
+		"roda_tras": rodas_tras_fase_5[indice_roda_tras],
+		"roda_frente": rodas_frente_fase_5[indice_roda_frente],
+		"chave": chave_carro
+	}
+
+	carros_feitos_fase_5.append(novo_carro)
+
+	if carros_feitos_fase_5.size() == total_carros_fase_5:
+		return {
+			"aceito": true,
+			"fase_concluida": true,
+			"mensagem": "Parabéns! Você construiu 8 carros diferentes e concluiu a fase 5.",
+			"carro": novo_carro,
+			"carros_feitos": carros_feitos_fase_5
+		}
+
+	return {
+		"aceito": true,
+		"fase_concluida": false,
+		"mensagem": "Carro construído com sucesso. Continue montando carros diferentes.",
+		"carro": novo_carro,
+		"carros_feitos": carros_feitos_fase_5
+	}
+
+
+static func get_carros_feitos_fase_5() -> Array:
+	return carros_feitos_fase_5
+
+
+static func indices_validos_fase_5(indice_cor: int, indice_roda_tras: int, indice_roda_frente: int) -> bool:
+	if indice_cor < 0 or indice_cor >= cores_fase_5.size():
+		return false
+
+	if indice_roda_tras < 0 or indice_roda_tras >= rodas_tras_fase_5.size():
+		return false
+
+	if indice_roda_frente < 0 or indice_roda_frente >= rodas_frente_fase_5.size():
+		return false
+
+	return true
 }
