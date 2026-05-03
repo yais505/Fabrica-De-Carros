@@ -85,7 +85,8 @@ static var questoes := {
 		"roda_frente": [-3, 5, 7],
 		"resultado": 62
 		# Conta: (8 * 7) - -6 = 62
-	}
+		}}
+
 
 # QUESTÃO ESPECIAL - FASE 5
 
@@ -172,4 +173,3 @@ static func indices_validos_fase_5(indice_cor: int, indice_roda_tras: int, indic
 		return false
 
 	return true
-}
